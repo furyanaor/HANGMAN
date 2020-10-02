@@ -1,4 +1,4 @@
-HANGMAN_ASCII_ART ="""\\   _    _
+HANGMAN_ASCII_ART = """\\   _    _
    | |  | |
    | |__| | __ _ _ __   __ _ _ __ ___   __ _ _ __
    |  __  |/ _' | '_ \ / _' | '_ ' _ \ / _' | '_ \\
@@ -11,11 +11,9 @@ HANGMAN_ASCII_ART ="""\\   _    _
 MAX_TRIES = 6
 print(HANGMAN_ASCII_ART)
 
-print("set a new word:")
-word = input()
-print("thw word is:", word)
+word = input("set a new word: ")
+print("thק word is:", word)
 print('_ ' * len(word))
 
-print("Let's geuss some letter: ")
-letter = input()
-print("your letter is: ", letter.lower())
+letter = input("Let's geuss some letter: ")
+print("your letter is:", letter.lower())
