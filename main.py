@@ -13,6 +13,12 @@ MAX_TRIES = 6
 print(HANGMAN_ASCII_ART)
 
 def is_valid_input(letter_guessed):
+    """is_valid_input: check if input is not singl eng letter
+    letter_gussed: passed from user input
+    type letter_gussed: string
+    return: answer if true or false (and printing error num)
+    rtype: bool
+    """
     if len(letter_guessed) > 1:
         if not letter_guessed.isalpha():
             print("E3")
