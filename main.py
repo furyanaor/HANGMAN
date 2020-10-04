@@ -12,7 +12,7 @@ HANGMAN_ASCII_ART = """ \\
 MAX_TRIES = 6
 print(HANGMAN_ASCII_ART)
 
-def is_valid_input(letter_guessed):
+def check_valid_input(letter_guessed, old_letters_guessed):
     """is_valid_input: check if input is not singl eng letter
     letter_gussed: passed from user input
     type letter_gussed: string
@@ -29,17 +29,24 @@ def is_valid_input(letter_guessed):
         print("E2")
         return False
     else:
-        print("your letter is:", letter_guessed.lower())
-        return True
+        if letter_guessed not in old_letters_guessed:
+            print("your letter is:", letter_guessed.lower())
+            old_letters_guessed.append(letter_guessed)
+            return True
+        else:
+            print("E4")
+            return False
 
 def main():
     
     word = input("set a new word: ")
     print("the word is:", word)
     print('_ ' * len(word))
-
+    
+    old_letters_guessed = []
     letter = input("Let's geuss some letter: ")
-    print(is_valid_input(letter))
+    print(check_valid_input(letter, old_letters_guessed))
+    print(check_valid_input(letter, old_letters_guessed)) #just checking!! - work!@# perfectly @!#!#@!$
     
 if __name__ == "__main__":
     main()
