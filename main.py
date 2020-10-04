@@ -32,9 +32,14 @@ def is_valid_input(letter_guessed):
         print("your letter is:", letter_guessed.lower())
         return True
 
-word = input("set a new word: ")
-print("the word is:", word)
-print('_ ' * len(word))
+def main():
+    
+    word = input("set a new word: ")
+    print("the word is:", word)
+    print('_ ' * len(word))
 
-letter = input("Let's geuss some letter: ")
-print(is_valid_input(letter))
+    letter = input("Let's geuss some letter: ")
+    print(is_valid_input(letter))
+    
+if __name__ == "__main__":
+    main()
