@@ -1,3 +1,4 @@
+
 def wellcome():
     HANGMAN_ASCII_ART = """ \\
         _    _
@@ -13,11 +14,13 @@ def wellcome():
     MAX_TRIES = 6
     print(HANGMAN_ASCII_ART)
 
+
 def worng_input_printer(old_letters_guessed):
     old_letters_guessed.sort()
     print("X")
     result = " -> ".join(old_letters_guessed)
     print(result)
+
 
 def check_valid_input(letter_guessed, old_letters_guessed):
     """is_valid_input: check if input is not singl eng letter
@@ -47,18 +50,37 @@ def check_valid_input(letter_guessed, old_letters_guessed):
             worng_input_printer(old_letters_guessed)
             return False
 
+
+def show_hidden_word(secret_word, old_letters_guessed):
+    for i in range(len(secret_word)):
+        if secret_word[i].lower() in old_letters_guessed:
+            print(secret_word[i].lower(), end =" ")
+        else:
+            print("_", end =" ")
+    print("")
+
+
+
+def check_win(secret_word, old_letters_guessed):
+    for i in secret_word:
+        if i not in old_letters_guessed:
+            return False
+    return True
+
 def main():
     wellcome()
     
-    word = input("set a new word: ")
-    print("the word is: ", word)
-    print('_ ' * len(word))
+    secret_word = input("set a new word: ")
+    print("the word is: ", secret_word)
+    print('_ ' * len(secret_word))
     
     old_letters_guessed = ["c", "r", "a"] # *must to be empty!
-    letter = input("Let's geuss some letter: ")
-    print("input letter is: ", letter)
-    print(check_valid_input(letter, old_letters_guessed))
-    print(check_valid_input(letter, old_letters_guessed)) #just checking!! - work!@# perfectly @!#!#@!$
+    while check_win(secret_word, old_letters_guessed) != True:
+        letter = input("Let's geuss some letter: ")
+        print("input letter is: ", letter)
+        if check_valid_input(letter, old_letters_guessed) == True:
+            show_hidden_word(secret_word, old_letters_guessed)
+    print("****end!!!")
     
 if __name__ == "__main__":
     main()
