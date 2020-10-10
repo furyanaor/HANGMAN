@@ -132,11 +132,24 @@ def check_win(secret_word, old_letters_guessed):
     return True
 
 
-def main():
+def choose_word(file_path, index):
+    words_file = open(file_path, "r")
+    words_list = words_file.readline().split(" ")
+    words_list_filtered = []
+    for word in words_list:
+        if word not in words_list_filtered:
+            words_list_filtered.append(word)
+    result = (len(words_list_filtered), words_list[index%len(words_list)-1])
+    # have to delete the printing of the secret word(!)
+    print(result)
+    return result
 
-    secret_word = input("set a new word: ")
-    print("the word is: ", secret_word)
-    print('_ ' * len(secret_word))
+
+def main():
+    secret_word_path = r"c:\t1.txt"
+    secret_word_index = int(input("please choose word 1-14: "))
+    secret_word = choose_word(secret_word_path, secret_word_index)
+    print('_ ' * len(secret_word[1]))
 
     old_letters_guessed = []
     guess_number = 0
